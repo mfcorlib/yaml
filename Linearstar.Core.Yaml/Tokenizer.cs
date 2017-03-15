@@ -334,7 +334,7 @@ namespace Linearstar.Core.Yaml
 						if (trimEnd) value = value.TrimEnd();
 
 						scanner.MaybeSimpleKey = false;
-						tokens.Add(new Token(scanner, kind == '>' ? TokenKind.StringFolding : TokenKind.StringLiteral, begin, scanner.Index - begin));
+						tokens.Add(new Token(scanner, kind == '>' ? TokenKind.StringFolding : TokenKind.StringLiteral, value, begin, scanner.Index - begin));
 
 						return;
 					}
