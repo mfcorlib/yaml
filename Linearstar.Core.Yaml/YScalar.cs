@@ -25,6 +25,7 @@ namespace Linearstar.Core.Yaml
 				case TokenKind.StringFolding:
 				case TokenKind.StringLiteral:
 					{
+						var kind = tokenizer.Current.Kind;
 						var value = tokenizer.Current.Value;
 
 						if (tokenizer.Current.Kind == TokenKind.StringDouble)
@@ -32,7 +33,7 @@ namespace Linearstar.Core.Yaml
 
 						tokenizer.MoveNext();
 
-						return new YScalar(value);
+						return new YScalar(value) { Style = kind == TokenKind.StringFolding || kind == TokenKind.StringLiteral ? YNodeStyle.Block : YNodeStyle.Flow };
 					}
 				case TokenKind.StringPlain:
 					{
