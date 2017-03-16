@@ -10,6 +10,18 @@ namespace Linearstar.Core.Yaml
 		public override YNode FirstNode => children.FirstOrDefault();
 		public override YNode LastNode => children.LastOrDefault();
 
+		public YNode this[YScalar key]
+		{
+			get => children.FirstOrDefault(i => i.Key.Equals(key));
+			set
+			{
+				if (children.FirstOrDefault(i => i.Key.Equals(key)) is YKeyValuePair kvp)
+					kvp.Value = value;
+				else
+					children.Add(new YKeyValuePair(key, value));
+			}
+		}
+
 		public YMapping(params object[] content)
 			: base(content)
 		{
