@@ -158,7 +158,14 @@ namespace Linearstar.Core.Yaml
 		public override int GetHashCode() =>
 			typeof(YScalar).GetHashCode() ^ (Value?.GetHashCode() ?? 0);
 
-		public static explicit operator string(YScalar scalar) =>
-			(string)scalar.Value;
+		public static explicit operator bool(YScalar scalar) => (bool)scalar.Value;
+		public static explicit operator int(YScalar scalar) => (int)scalar.Value;
+		public static explicit operator double(YScalar scalar) => (double)scalar.Value;
+		public static explicit operator string(YScalar scalar) => (string)scalar.Value;
+
+		public static implicit operator YScalar(bool value) => new YScalar(value);
+		public static implicit operator YScalar(int value) => new YScalar(value);
+		public static implicit operator YScalar(double value) => new YScalar(value);
+		public static implicit operator YScalar(string value) => new YScalar(value);
 	}
 }
