@@ -151,6 +151,13 @@ namespace Linearstar.Core.Yaml
 			}
 		}
 
+		public override bool Equals(object obj) =>
+			obj is YScalar scalar &&
+			(scalar.Value?.Equals(Value) ?? Value == null);
+
+		public override int GetHashCode() =>
+			typeof(YScalar).GetHashCode() ^ (Value?.GetHashCode() ?? 0);
+
 		public static explicit operator string(YScalar scalar) =>
 			(string)scalar.Value;
 	}
