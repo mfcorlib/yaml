@@ -12,7 +12,7 @@ namespace Linearstar.Core.Yaml
 
 		public YNode this[YScalar key]
 		{
-			get => children.FirstOrDefault(i => i.Key.Equals(key));
+			get => children.FirstOrDefault(i => i.Key.Equals(key))?.Value;
 			set
 			{
 				if (children.FirstOrDefault(i => i.Key.Equals(key)) is YKeyValuePair kvp)
