@@ -56,5 +56,10 @@ namespace Linearstar.Core.Yaml
 
 		protected static string AddIndent(string str) =>
 			"  " + str.Replace("\n", "\n  ");
+
+		public static explicit operator bool(YNode node) => (bool)((YScalar)node).Value;
+		public static explicit operator int(YNode node) => (int)((YScalar)node).Value;
+		public static explicit operator double(YNode node) => (double)((YScalar)node).Value;
+		public static explicit operator string(YNode node) => (string)((YScalar)node).Value;
 	}
 }
